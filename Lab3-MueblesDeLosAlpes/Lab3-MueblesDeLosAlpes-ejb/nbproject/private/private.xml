@@ -2,6 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Mueble.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Pais.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/TipoUsuario.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Ciudad.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Profesion.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Usuario.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/ExperienciaVendedor.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/Vendedor.java</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/setup/glassfish-resources.xml</file>
+            <file>file:/Users/camilomarroquin/Documents/Uniandes/Tercer_semestre/Componentes/Laboratorios/Laboratorio%205/Lab5JTA/Lab3-MueblesDeLosAlpes/Lab3-MueblesDeLosAlpes-ejb/src/java/com/losalpes/entities/RegistroVenta.java</file>
+        </group>
     </open-files>
 </project-private>
