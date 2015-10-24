@@ -23,12 +23,12 @@ import static org.junit.Assert.*;
  *
  * @author Camilo Marroquin
  */
-public class PersistenciaCMTTest {
+public class PersistenciaBMTTest {
     private static EJBContainer ejbContainer;
     ServicioRegistroMock servicioRegistroMock = lookupServicioRegistroMockBean();
     ServicioCatalogoMock servicioCatalogoMock = lookupServicioCatalogoMockBean();
     
-    public PersistenciaCMTTest() {
+    public PersistenciaBMTTest() {
     }
 
     /**
@@ -38,7 +38,7 @@ public class PersistenciaCMTTest {
     public void testInsertRemoteDatabase() throws Exception {
         System.out.println("insertRemoteDatabase");
         Vendedor vendedor = null;
-        PersistenciaCMT instance = new PersistenciaCMT();
+        PersistenciaBMT instance = new PersistenciaBMT();
         instance.insertRemoteDatabase(vendedor);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -51,7 +51,7 @@ public class PersistenciaCMTTest {
     public void testDeleteRemoteDatabase() throws Exception {
         System.out.println("deleteRemoteDatabase");
         Vendedor vendedor = null;
-        PersistenciaCMT instance = new PersistenciaCMT();
+        PersistenciaBMT instance = new PersistenciaBMT();
         instance.deleteRemoteDatabase(vendedor);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -79,7 +79,7 @@ public class PersistenciaCMTTest {
             
         
         EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
-        PersistenciaCMTLocal instance = (PersistenciaCMTLocal)container.getContext().lookup("java:global/classes/PersistenciaCMT");
+        PersistenciaBMTLocal instance = (PersistenciaBMTLocal)container.getContext().lookup("java:global/classes/PersistenciaBMT");
         instance.comprar(venta);
         container.close();
         // TODO review the generated test code and remove the default call to fail.
