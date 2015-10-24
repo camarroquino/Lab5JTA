@@ -5,6 +5,7 @@
  */
 package com.losalpes.servicios;
 
+import com.losalpes.entities.Mueble;
 import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.Vendedor;
 import com.losalpes.excepciones.CupoInsuficienteException;
@@ -59,35 +60,49 @@ public class PersistenciaCMT implements PersistenciaCMTLocal {
     
     @Override
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
-    public void comprar(RegistroVenta venta){
+    public void comprar(RegistroVenta venta) throws Exception{
         //TODO: implementar logica de inserción 
-        
-        em.persist(venta);
-        
-        Connection con;
-        PreparedStatement ps;
         
         // Try necesario para evitar problemas de compilación
         try {
-            con = dataSource.getConnection("adminLosAlpes","12345");
+            Mueble mueble = venta.getProducto();
+
+            if(mueble.getCantidad()<venta.getCantidad()){
+                sctx.setRollbackOnly();
+                throw new CupoInsuficienteException("El numero de la orden supera los muebles disponibles.");
+            }
+        
+            em.persist(venta);
+
+            Connection con;
+            PreparedStatement ps;
+        
+            con = dataSource.getConnection("adminLosAlpes","1234");
             
             ps = con.prepareStatement("SELECT * FROM TARJETACREDITOALPES WHERE login = ?");
             ps.setString(1, venta.getComprador().getLogin());
-            
+           
             ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()){
+            if (rs.next()) {
                 Double cupo = rs.getDouble("cupo");
                 if (cupo < venta.getCantidad() * venta.getProducto().getPrecio()) {
+                    sctx.setRollbackOnly();
                     throw new CupoInsuficienteException("El cupo de la tarjeta es insuficiente");
+                } else {
+                    ps = con.prepareStatement("UPDATE  TARJETACREDITOALPES SET cupo=? WHERE login = ?");
+                    ps.setDouble(1, cupo - venta.getCantidad() * venta.getProducto().getPrecio());
+                    ps.setString(2, venta.getComprador().getLogin());
+                    ps.executeUpdate();
                 }
-                else {
-                    
-                }
-            }
+            } else {
+                sctx.setRollbackOnly();
+                throw new CupoInsuficienteException("El usuario no tiene tarjeta de crédito.");
+            }       
             
         } catch (SQLException ex) {
             Logger.getLogger(PersistenciaCMT.class.getName()).log(Level.SEVERE, null, ex);
+            sctx.setRollbackOnly();
+            throw new CupoInsuficienteException("El usuario no tiene tarjeta de crédito.");
         }
         
     }
