@@ -5,6 +5,7 @@
  */
 package com.losalpes.servicios;
 
+import com.losalpes.entities.RegistroVenta;
 import javax.ejb.Local;
 
 /**
@@ -13,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface PersistenciaCMTLocal {
-    
+    public void comprar(RegistroVenta venta);
 }

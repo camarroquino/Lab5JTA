@@ -5,11 +5,14 @@
  */
 package com.losalpes.servicios;
 
+import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.Vendedor;
 import java.sql.SQLException;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
 import javax.ejb.TransactionManagement;
 import javax.ejb.TransactionManagementType;
 import javax.persistence.EntityManager;
@@ -49,6 +52,13 @@ public class PersistenciaCMT implements PersistenciaCMTLocal {
         } catch (PersistenceException persistenceException) {
             throw new PersistenceException("No fue posible eliminar el vendedor. " + persistenceException);
         }
+    }
+    
+    @Override
+    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+    public void comprar(RegistroVenta venta){
+        //TODO: implementar logica de inserción 
+        
     }
 }
         
