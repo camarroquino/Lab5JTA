@@ -7,7 +7,10 @@ package com.losalpes.servicios;
 
 import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.Vendedor;
-import java.sql.SQLException;
+import com.losalpes.excepciones.CupoInsuficienteException;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
@@ -58,6 +61,34 @@ public class PersistenciaCMT implements PersistenciaCMTLocal {
     @TransactionAttribute(TransactionAttributeType.REQUIRED)
     public void comprar(RegistroVenta venta){
         //TODO: implementar logica de inserción 
+        
+        em.persist(venta);
+        
+        Connection con;
+        PreparedStatement ps;
+        
+        // Try necesario para evitar problemas de compilación
+        try {
+            con = dataSource.getConnection("adminLosAlpes","12345");
+            
+            ps = con.prepareStatement("SELECT * FROM TARJETACREDITOALPES WHERE login = ?");
+            ps.setString(1, venta.getComprador().getLogin());
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+                Double cupo = rs.getDouble("cupo");
+                if (cupo < venta.getCantidad() * venta.getProducto().getPrecio()) {
+                    throw new CupoInsuficienteException("El cupo de la tarjeta es insuficiente");
+                }
+                else {
+                    
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(PersistenciaCMT.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 }
