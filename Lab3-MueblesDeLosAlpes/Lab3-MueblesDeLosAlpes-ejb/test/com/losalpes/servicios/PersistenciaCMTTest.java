@@ -68,7 +68,7 @@ public class PersistenciaCMTTest {
         Mueble mueble = servicioCatalogoMock.darMueble(0);
         
         RegistroVenta venta = new RegistroVenta(new Date(), mueble, 2,"Bogota", usuario);
-        
+            
         
         EJBContainer container = javax.ejb.embeddable.EJBContainer.createEJBContainer();
         PersistenciaCMTLocal instance = (PersistenciaCMTLocal)container.getContext().lookup("java:global/classes/PersistenciaCMT");
@@ -97,5 +97,7 @@ public class PersistenciaCMTTest {
             throw new RuntimeException(ne);
         }
     }
+    
+    
     
 }

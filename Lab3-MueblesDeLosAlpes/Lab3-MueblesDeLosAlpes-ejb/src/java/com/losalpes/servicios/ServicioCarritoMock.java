@@ -17,6 +17,8 @@ import com.losalpes.entities.RegistroVenta;
 import com.losalpes.entities.Usuario;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -37,6 +39,13 @@ public class ServicioCarritoMock implements IServicioCarritoMockRemote, IServici
      @EJB
     private IServicioPersistenciaMockLocal persistencia;
 
+     
+    /**
+     * Interface con referencia al servicio de persistencia en el sistema
+     */
+     @EJB
+    private PersistenciaCMTLocal persistenciaCMT;
+     
     /**
      * Lista con los muebles del carrito
      */
@@ -124,12 +133,14 @@ public class ServicioCarritoMock implements IServicioCarritoMockRemote, IServici
         {
             mueble = inventario.get(i);
             Mueble editar=(Mueble) persistencia.findById(Mueble.class, mueble.getReferencia());
-            editar.setCantidad(editar.getCantidad()-mueble.getCantidad());
-            RegistroVenta compra=new RegistroVenta(new Date(System.currentTimeMillis()), mueble, mueble.getCantidad(), null, usuario);
-            usuario.agregarRegistro(compra);
-
-            persistencia.update(usuario);
-            persistencia.update(editar);
+        //    editar.setCantidad(editar.getCantidad()-mueble.getCantidad());
+            RegistroVenta compra=new RegistroVenta(new Date(System.currentTimeMillis()), mueble, mueble.getCantidad(), "BOGOTA", usuario);
+            try {
+                //    usuario.agregarRegistro(compra);
+                persistenciaCMT.comprar(compra);
+            } catch (Exception ex) {
+                Logger.getLogger(ServicioCarritoMock.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         limpiarLista();
     }

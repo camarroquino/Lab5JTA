@@ -15,23 +15,27 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 
 /**
  * Clase que modela un registro de venta realizado por un cliente
  */
 @Entity
+@SequenceGenerator(name="SEQ",sequenceName = "registro_secuence",allocationSize=1)
 public class RegistroVenta implements Serializable
 {
 
     //-----------------------------------------------------------
     // Atributos
     //-----------------------------------------------------------
-
+    @GeneratedValue(strategy=GenerationType.IDENTITY, generator="SEQ")
     @Id
     private long registro;
 

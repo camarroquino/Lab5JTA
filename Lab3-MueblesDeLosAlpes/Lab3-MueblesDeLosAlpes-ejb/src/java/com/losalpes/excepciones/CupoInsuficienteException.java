@@ -10,6 +10,8 @@ import javax.ejb.ApplicationException;
 /**
  *
  * @author Camilo Marroquin
+ * Por convención la excepcion extendida de RunTimeException en 
+ * tiempo de ejecución cancela la transacción
  */
 @ApplicationException
 public class CupoInsuficienteException extends RuntimeException {

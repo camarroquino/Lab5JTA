@@ -119,8 +119,7 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
     {
         return persistencia.findAll(Mueble.class);
     }
-    
-    
+
     /***
      * Devuelve el mueble con el id especificado
      * @param i
@@ -129,5 +128,5 @@ public class ServicioCatalogoMock implements IServicioCatalogoMockRemote,IServic
     public Mueble darMueble(int i){
         return (Mueble) persistencia.findById(Mueble.class, i);
     }
-
+    
 }

@@ -13,6 +13,6 @@ import javax.ejb.Local;
  * @author waira2
  */
 @Local
-public interface PersistenciaCMTLocal {
-    public void comprar(RegistroVenta venta);
+public interface PersistenciaCMTLocal  {
+    public void comprar(RegistroVenta venta) throws Exception;
 }

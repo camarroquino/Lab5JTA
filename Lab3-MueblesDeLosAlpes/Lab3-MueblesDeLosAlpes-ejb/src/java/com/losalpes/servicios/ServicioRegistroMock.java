@@ -106,6 +106,8 @@ public class ServicioRegistroMock implements IServicioRegistroMockRemote, IServi
         return(ArrayList<Usuario>) persistencia.findAll(Usuario.class);
     }
 
+    
+    
     /***
      * Devuelve el usuario con el Id enviado
      * @param id

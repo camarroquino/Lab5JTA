@@ -5,6 +5,8 @@
  */
 package com.losalpes.servicios;
 
+import com.losalpes.entities.RegistroVenta;
+import com.losalpes.entities.Vendedor;
 import javax.ejb.Local;
 
 /**
@@ -14,4 +16,9 @@ import javax.ejb.Local;
 @Local
 public interface PersistenciaBMTLocal {
     
+    public void insertRemoteDatabase(Vendedor vendedor) throws Exception;
+    
+    public void deleteRemoteDatabase(Vendedor vendedor) throws Exception;
+    
+    public void comprar(RegistroVenta venta) throws Exception;
 }

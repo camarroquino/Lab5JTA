@@ -129,6 +129,9 @@ public class CarritoBean implements Serializable
             destroyBean();
         }
     }
+  
+    
+    
 
     /**
      * Devuelve el precio total del inventario
